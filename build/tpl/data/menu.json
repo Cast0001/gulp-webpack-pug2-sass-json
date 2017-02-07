@@ -1,0 +1,46 @@
+{
+	"menu": [
+		{ 
+			"title": "Главная",
+			"active": false,
+			"sub": false
+		},
+		{ 
+			"title": "Наши услуги",
+			"active": true,
+			"sub": [
+				{ 
+					"title": "Программирование на JavaScript",
+					"active": false,
+					"sub": false
+				},
+				{ 
+					"title": "Вёртска сайтов",
+					"active": true,
+					"sub": [
+						{ 
+							"title": "HTML",
+							"active": false,
+							"sub": false
+						},
+						{ 
+							"title": "CSS",
+							"active": true,
+							"sub": false
+						}
+					]
+				}
+			]
+		},
+		{ 
+			"title": "О компании",
+			"active": false,
+			"sub": false
+		},
+		{ 
+			"title": "Контакты",
+			"active": false,
+			"sub": false
+		}
+	]
+}

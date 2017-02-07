@@ -1,0 +1,21 @@
+.menu
+    ul: for element1 in data.menu
+        li.menu__link.menu__link--lvl1(class=element1.active? "active" : "")
+            if element1.active
+                span #{element1.title}  
+            else
+                a(href="#") #{element1.title}
+            if element1.sub
+                ul: for element2 in element1.sub
+                    li.menu__link.menu__link--lvl2(class=element2.active? "active" : "")
+                        if element2.active
+                           span #{element2.title}  
+                        else
+                            a(href="#") #{element2.title}
+                        if element2.sub
+                            ul: for element3 in element2.sub
+                                li.menu__link.menu__link--lvl3(class=element3.active? "active" : "")
+                                    if element3.active
+                                        span #{element3.title}  
+                                    else
+                                        a(href="#") #{element3.title}

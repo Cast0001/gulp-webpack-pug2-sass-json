@@ -1,0 +1,10 @@
+doctype html
+html(lang='ru')
+    include ../blocks/head.pug
+    body
+        .wrapper
+            include ../blocks/header.pug
+            .content
+                block content
+            include ../blocks/footer.pug
+    include ../blocks/scripts.pug

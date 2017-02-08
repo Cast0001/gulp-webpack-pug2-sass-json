@@ -80,18 +80,20 @@ gulp.task('fonts', () => {
 
 
 gulp.task('json', () => {
-    return gulp.src('build/tpl/data/*.json')
+    return gulp.src('build/data/elements/*.json')
     .pipe(merge('data.json'))
-    .pipe(gulp.dest('build/tpl'));
+    .pipe(gulp.dest('build/data'));
 });
 
 
 gulp.task('html', ['json'] , () => {
-    const data = require('./build/tpl/data.json');    
+    const data = require('./build/data/data.json');    
     return gulp.src('build/tpl/*.pug')
     .pipe(plumber())
     .pipe(pug(
-        { data: data }
+        { 
+            data: data
+        }
     ))
     .pipe(
         gulpIf(
@@ -105,7 +107,7 @@ gulp.task('html', ['json'] , () => {
 
 
 gulp.task('css', () => {
-    gulp.src('build/styles/*.scss')
+    return gulp.src('build/styles/*.scss')
     .pipe(plumber())
     .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer(
@@ -163,7 +165,7 @@ gulp.task('js', () => {
         noParse: /\/node_modules\/(jquery|jquery-placeholder|lodash)/,
     };
 
-    gulp.src('build/scripts/**/*.js')
+    return gulp.src('build/scripts/**/*.js')
     .pipe(plumber({
         errorHandler: notify.onError(err => (
             {
@@ -201,8 +203,8 @@ gulp.task('delProduction', () => {
 
 gulp.task('default', gulpIf(
     development,
-    ['connect', 'images', 'sprites', 'fonts', 'json', 'html', 'js', 'css', 'watch'],
-    ['delProduction', 'images', 'sprites', 'fonts', 'json', 'html', 'js', 'css', 'watch']
+    ['images', 'sprites', 'fonts', 'json', 'html', 'js', 'css', 'connect', 'watch'],
+    ['delProduction', 'images', 'sprites', 'fonts', 'json', 'html', 'js', 'css']
 ));
 
 
